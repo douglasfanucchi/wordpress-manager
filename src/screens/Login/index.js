@@ -2,8 +2,9 @@ import React from "react";
 import { Text, StatusBar, View, StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { colors } from "../../constants/colors";
+import { connect } from 'react-redux'
 
-export default function Login() {
+function Login({logged, jwt, logar}) {
   return (
     <>
       <StatusBar hidden={true}></StatusBar>
@@ -32,3 +33,16 @@ const styles = StyleSheet.create({
     width: 300
   }
 });
+
+const mapStateToProps = state => ({
+    logged: state.login.logged,
+    jwt: state.login.jwt
+})
+
+const mapDispatchToProps = dispatch => ({
+    logar: function(jwt) {
+        dispatch({type: 'logar', jwt})
+    }
+})
+ 
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
