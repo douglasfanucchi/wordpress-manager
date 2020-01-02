@@ -1,19 +1,19 @@
 import React from 'react';
-import { createStackNavigator } from 'react-navigation-stack'
 import { createAppContainer } from 'react-navigation'
+import { createDrawerNavigator } from 'react-navigation-drawer'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
 import Reducers from './src/reducers'
 
-import Login from './src/screens/Login'
+import Posts from './src/screens/Posts'
 
 const store = createStore(Reducers)
 
 export default function App() {
-  const AppNavigator = createStackNavigator({
-    Login: {
-      screen: Login,
+  const AppNavigator = createDrawerNavigator({
+    Posts: {
+      screen: Posts,
       navigationOptions: {
         headerShown: false
       }
