@@ -7,7 +7,10 @@ import Login from './src/screens/Login'
 export default function App() {
   const AppNavigator = createStackNavigator({
     Login: {
-      screen: Login
+      screen: Login,
+      navigationOptions: {
+        headerShown: false
+      }
     }
   })
 
