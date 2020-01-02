@@ -1,7 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import {createStackNavigator} from 'react-navigation-stack'
 
 export default function App() {
+  console.log(createStackNavigator)
   return (
     <View style={styles.container}>
       <Text>Open up App.js to start working on your app!</Text>
