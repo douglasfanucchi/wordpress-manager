@@ -18,10 +18,11 @@ export default function Header({navigation}) {
         <Search />
       </View>
       <View style={[styles.row, styles.mt15]}>
-        <TouchableOpacity style={ [styles.headerActions, styles.borderRight] }>
+        <TouchableOpacity style={ styles.headerActions }>
           <FontAwesome name="list" size={16} style={styles.actionIcon} />
           <Text style={styles.actionText}>Categories</Text>
         </TouchableOpacity>
+        <View style={styles.pipe}></View>
         <TouchableOpacity style={ styles.headerActions }>
           <Entypo name="publish" size={16} style={styles.actionIcon} />
           <Text style={styles.actionText}>Publicar</Text>
@@ -62,9 +63,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center"
   },
-  borderRight: {
+  pipe: {
     borderRightWidth: 1,
-    borderRightColor: colors.grey
+    borderRightColor: colors.grey,
+    alignSelf: "stretch"
   },
   actionText: {
     fontSize: 16
