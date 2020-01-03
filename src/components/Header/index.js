@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet, StatusBar } from 'react-native'
+import { View, Text, StyleSheet, StatusBar, TouchableOpacity } from 'react-native'
 import { colors } from '../../constants/colors'
 
 import { Ionicons, FontAwesome, Entypo } from '@expo/vector-icons'
@@ -18,14 +18,14 @@ export default function Header({navigation}) {
         <Search />
       </View>
       <View style={[styles.row, styles.mt15]}>
-        <View style={ [styles.headerActions, styles.borderRight] }>
+        <TouchableOpacity style={ [styles.headerActions, styles.borderRight] }>
           <FontAwesome name="list" size={16} style={styles.actionIcon} />
           <Text style={styles.actionText}>Categories</Text>
-        </View>
-        <View style={ styles.headerActions }>
+        </TouchableOpacity>
+        <TouchableOpacity style={ styles.headerActions }>
           <Entypo name="publish" size={16} style={styles.actionIcon} />
           <Text style={styles.actionText}>Publicar</Text>
-        </View>
+        </TouchableOpacity>
       </View>
     </View>
   )
