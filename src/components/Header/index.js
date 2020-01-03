@@ -24,7 +24,7 @@ export default function Header({navigation}) {
         </TouchableOpacity>
         <View style={styles.pipe}></View>
         <TouchableOpacity style={ styles.headerActions }>
-          <Entypo name="publish" size={16} style={styles.actionIcon} />
+          <FontAwesome name="pencil-square-o" size={16} style={styles.actionIcon} />
           <Text style={styles.actionText}>Publicar</Text>
         </TouchableOpacity>
       </View>
