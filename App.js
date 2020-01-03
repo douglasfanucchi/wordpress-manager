@@ -1,13 +1,16 @@
 import React from "react";
+
 import { createAppContainer } from "react-navigation";
 import { createDrawerNavigator } from "react-navigation-drawer";
+import { createStackNavigator } from "react-navigation-stack";
+
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import { StyleSheet, ScrollView, View, Text, Image } from "react-native";
 
+import Header from './src/components/Header';
 import Reducers from "./src/reducers";
-
-import Posts from "./src/screens/Posts";
+import Home from "./src/screens/Home";
 
 import SafeAreaView from "react-native-safe-area-view";
 import { DrawerItems } from "react-navigation-drawer";
@@ -17,15 +20,29 @@ import { LinearGradient } from "expo-linear-gradient";
 const store = createStore(Reducers);
 
 export default function App() {
+  const HomeStack = createStackNavigator(
+  {
+    Home: {
+      screen: Home
+    }
+  },
+  {
+    defaultNavigationOptions: {
+      header: ({navigation}) => <Header navigation={navigation} />
+    }
+  })
+
   const AppNavigator = createDrawerNavigator(
     {
-      Posts: {
-        screen: Posts
+      HomeStack: {
+        screen: HomeStack,
+        navigationOptions: () => ({
+          title: "Home"
+        })
       }
     },
     {
       statusBarAnimation: true,
-      hideStatusBar: true,
       contentComponent: CustomDrawerContentComponent
     }
   );

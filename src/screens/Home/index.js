@@ -1,6 +1,5 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
+import { View, StyleSheet, StatusBar } from "react-native";
 import { colors } from "../../constants/colors";
 import { connect } from "react-redux";
 
