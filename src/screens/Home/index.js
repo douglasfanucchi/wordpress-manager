@@ -1,21 +1,43 @@
 import React from "react";
-import { View, StyleSheet, StatusBar } from "react-native";
+import {Text, View, StyleSheet } from "react-native";
 import { colors } from "../../constants/colors";
 import { connect } from "react-redux";
 
+import Card from '../../components/Card'
+import { ScrollView } from "react-native-gesture-handler";
+
 function Posts({ logged, jwt, logar }) {
   return (
-    <>
-      <View style={styles.cover}>
+    <ScrollView contentContainerStyle={{minHeight: "100%"}}>
+      <View style={styles.row}>
+        <View style={styles.column}>
+          <Card />
+        </View>
       </View>
-    </>
+      <View style={styles.row} >
+        <View style={styles.column}>
+          <Card />
+        </View>
+        <View style={styles.column}>
+          <Card />
+        </View>
+      </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  cover: {
-    flex: 1
+  row: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 15,
+    marginHorizontal: -10,
+    marginTop: 30
   },
+  column: {
+    flex: 1,
+    marginHorizontal: 10
+  }
 });
 
 const mapStateToProps = state => ({
