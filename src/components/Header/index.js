@@ -20,7 +20,7 @@ export default function Header({navigation}) {
       <View style={[styles.row, styles.mt15]}>
         <TouchableOpacity style={ styles.headerActions }>
           <FontAwesome name="list" size={16} style={styles.actionIcon} />
-          <Text style={styles.actionText}>Categories</Text>
+          <Text style={styles.actionText}>Categorias</Text>
         </TouchableOpacity>
         <View style={styles.pipe}></View>
         <TouchableOpacity style={ styles.headerActions }>

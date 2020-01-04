@@ -7,33 +7,38 @@ import { createStackNavigator } from "react-navigation-stack";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 
-import Header from './src/components/Header';
+import Header from "./src/components/Header";
 import Reducers from "./src/reducers";
 import Home from "./src/screens/Home";
 
-import CustomDrawerContentComponent from './src/components/custom-drawer';
+import CustomDrawerContentComponent from "./src/components/CustomDrawer";
+import { colors } from "./src/constants/colors";
+
+import { FontAwesome } from '@expo/vector-icons'
 
 const store = createStore(Reducers);
 
 export default function App() {
   const HomeStack = createStackNavigator(
-  {
-    Home: {
-      screen: Home
+    {
+      Home: {
+        screen: Home
+      }
+    },
+    {
+      defaultNavigationOptions: {
+        header: ({ navigation }) => <Header navigation={navigation} />
+      }
     }
-  },
-  {
-    defaultNavigationOptions: {
-      header: ({navigation}) => <Header navigation={navigation} />
-    }
-  })
+  );
 
   const AppNavigator = createDrawerNavigator(
     {
       HomeStack: {
         screen: HomeStack,
         navigationOptions: () => ({
-          title: "Home"
+          title: "Home",
+          drawerIcon: ({tintColor}) => <FontAwesome name="home" size={16} style={tintColor} />,
         })
       }
     },
@@ -51,4 +56,3 @@ export default function App() {
     </Provider>
   );
 }
-
