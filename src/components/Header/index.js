@@ -24,7 +24,7 @@ class Header extends React.Component {
             name="md-menu"
             size={20}
             style={styles.icon}
-            onPress={() => this.navigation.openDrawer()}
+            onPress={() => this.props.navigation.openDrawer()}
           />
           <Text style={styles.currentPage}>Home</Text>
         </View>

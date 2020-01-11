@@ -1,19 +1,26 @@
 import React, { Component } from "react";
-import { View, Text, Button, Modal, StyleSheet } from "react-native";
+import { View, TextInput, Text, Button, Modal, StyleSheet } from "react-native";
+import { colors } from '../../constants/colors'
 import { connect } from "react-redux";
 
 class ModalLogin extends Component {
   render() {
     return (
       <Modal
-        animationType={"slide"}
+        transparent
+        animationType={"fade"}
         visible={this.props.open}
         onRequestClose={() => this.props.closeModal()}
       >
-        <View styles={styles.modalStyles}>
-          <View styles={styles.containerSyles}>
-            <Text>AAAAA</Text>
-            <Button icon={'close'} title={'fechar'} onPress={() => this.props.closeModal()}></Button>
+        <View style={styles.modalStyles}>
+          <View style={styles.containerStyles}>
+            <View style={styles.panel}>
+              <Text style={styles.label}>Usuário</Text>
+              <TextInput style={styles.input} />
+              <Text style={styles.label}>Senha</Text>
+              <TextInput secureTextEntry={true} style={styles.input} />
+            </View>
+            <Button icon={'close'} title={'Entrar'} onPress={() => this.props.closeModal()}></Button>
           </View>
         </View>
       </Modal>
@@ -25,14 +32,27 @@ const styles = StyleSheet.create({
   modalStyles: {
     flex: 1,
     backgroundColor: "rgba(0, 0, 0, 0.5)",
-    width: '100%',
-    height: 500
   },
-  containerSyles: {
+  containerStyles: {
     flex: 1,
-    marginVertical: 40,
-    marginHorizontal: 20,
-    padding: 20
+    marginVertical: 300,
+    marginHorizontal: 40,
+    padding: 20,
+    backgroundColor: 'rgb(255, 255, 255)',
+    justifyContent: 'space-between'
+  },
+  input: {
+    borderBottomWidth: 1,
+    paddingHorizontal: 5,
+    paddingRight: 35,
+    borderRadius: 5,
+    borderColor: colors.greyBorder,
+    color: '#000',
+    marginBottom: 20,
+    fontSize: 14
+  },
+  panel: {
+
   }
 });
 
