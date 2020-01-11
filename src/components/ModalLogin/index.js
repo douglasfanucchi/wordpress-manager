@@ -34,12 +34,12 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
   containerStyles: {
-    flex: 1,
-    marginVertical: 300,
+    marginTop: 300,
     marginHorizontal: 40,
     padding: 20,
     backgroundColor: 'rgb(255, 255, 255)',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    height: 250
   },
   input: {
     borderBottomWidth: 1,
