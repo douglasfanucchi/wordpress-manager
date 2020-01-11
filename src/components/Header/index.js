@@ -1,35 +1,60 @@
-import React from 'react'
-import { View, Text, StyleSheet, StatusBar, TouchableOpacity } from 'react-native'
-import { colors } from '../../constants/colors'
+import React from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  StatusBar,
+  TouchableOpacity
+} from "react-native";
+import { colors } from "../../constants/colors";
+import { connect } from "react-redux";
 
-import { Ionicons, FontAwesome, Entypo } from '@expo/vector-icons'
+import { Ionicons, FontAwesome, Entypo } from "@expo/vector-icons";
 
-import Search from '../Search'
+import Search from "../Search";
+import ModalLogin from "../ModalLogin"
 
-export default function Header({navigation}) {
-
-  return(
-    <View style={styles.header}>
-      <View style={styles.row}>
-        <Ionicons name="md-menu" size={20} style={styles.icon} onPress={() => navigation.openDrawer()} />
-        <Text style={styles.currentPage}>Home</Text>
+class Header extends React.Component {
+  render() {
+    return (
+      <View style={styles.header}>
+        <ModalLogin></ModalLogin>
+        <View style={styles.row}>
+          <Ionicons
+            name="md-menu"
+            size={20}
+            style={styles.icon}
+            onPress={() => this.navigation.openDrawer()}
+          />
+          <Text style={styles.currentPage}>Home</Text>
+        </View>
+        <View style={[styles.row, styles.mt15]}>
+          <Search />
+        </View>
+        <View style={[styles.row, styles.mt15]}>
+          <TouchableOpacity style={styles.headerActions}>
+            <FontAwesome name="list" size={16} style={styles.actionIcon} />
+            <Text style={styles.actionText}>Categorias</Text>
+          </TouchableOpacity>
+          <View style={styles.pipe}></View>
+          <TouchableOpacity
+            style={styles.headerActions}
+            onPress={() => {
+              console.log(this);
+              this.props.openModal()
+            }}
+          >
+            <FontAwesome
+              name="pencil-square-o"
+              size={16}
+              style={styles.actionIcon}
+            />
+            <Text style={styles.actionText}>Publicar</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-      <View style={[styles.row, styles.mt15]}>
-        <Search />
-      </View>
-      <View style={[styles.row, styles.mt15]}>
-        <TouchableOpacity style={ styles.headerActions }>
-          <FontAwesome name="list" size={16} style={styles.actionIcon} />
-          <Text style={styles.actionText}>Categorias</Text>
-        </TouchableOpacity>
-        <View style={styles.pipe}></View>
-        <TouchableOpacity style={ styles.headerActions }>
-          <FontAwesome name="pencil-square-o" size={16} style={styles.actionIcon} />
-          <Text style={styles.actionText}>Publicar</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-  )
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -74,4 +99,12 @@ const styles = StyleSheet.create({
   actionIcon: {
     marginRight: 5
   }
-})
+});
+
+const mapDispatchToProps = dispatch => ({
+  openModal: function() {
+    dispatch({ type: "openModal" });
+  }
+});
+
+export default connect(null, mapDispatchToProps)(Header);
